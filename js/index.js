@@ -108,3 +108,27 @@ contactSectionPs[2].textContent = siteContent['contact']["email"]
 //Footer
 let footerSection = document.querySelector('footer')
 footerSection.textContent = siteContent['footer']['copyright']
+
+// #### Add new content
+// * [ ] Change the color of the navigation text to be green.
+let navBarText = document.querySelectorAll('.container header nav a')
+for (let i = 0; i < navBarText.length; i++){
+  navBarText[i].setAttribute('style', 'color:green'); 
+}
+
+// * [ ] Utilize `.appendChild()` and `.prepend()` to add two new items to the navigation system. You can call them whatever you want.
+var newNode1 = document.createElement('a')  // 1) create new node element
+newNode1.textContent = 'My New Link'        // 1) and add text to it
+newNode1.setAttribute('href', '#');         // 1) and add attribute to it
+
+
+let navBar = document.querySelector('.container header nav')  // 2) select existing node
+navBar.appendChild(newNode1)                                  // 2) append new node to existing node
+
+var newNode2 = document.createElement('a')  //create new node
+newNode2.textContent = 'My Other New Link'  //add text to it
+newNode2.setAttribute('href', '#');         //add attribute
+
+navBar.prepend(newNode2)                    //prepend node to node structure
+
+// * [ ] Check your work by looking at the [original html](original.html) in the browser
