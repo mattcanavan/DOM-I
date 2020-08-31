@@ -40,3 +40,95 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+// #### Create selectors to point your data into elements
+// * [ ] Create selectors by using any of the DOM element's methods
+// * [ ] Note that IDs have been used on all images. Use the IDs to update src path content
+// #### Update the HTML with the JSON data
+// * [ ] Remember, NO direct updating of the HTML source is allowed.
+// * [ ] Using your selectors, update the content to match the example file.
+// * [ ] Remember to update the src attributes on images
+
+// **** Updating hrefs in nav
+let headerLinks = document.querySelectorAll('a')
+// headerLinksArray = Array.from(headerLinks)
+for (let i = 0; i < headerLinks.length; i++){
+  headerLinks[i].textContent = `${siteContent["nav"][`nav-item-${i+1}`]}` //nav-item-x starts at index 1, so 0+1 = 1
+}
+
+// **** Updating class "cta"
+
+let h1 = document.querySelector('h1')
+h1.textContent = `${siteContent["cta"]["h1"]}`
+
+let ctaButton = document.querySelector('button')
+ctaButton. textContent = `${siteContent["cta"]["button"]}`
+
+let ctaImgSrc = document.querySelector("#cta-img")
+ctaImgSrc.setAttribute('src', siteContent["cta"]["img-src"])
+
+// **** Updating class "main-section"
+
+//Top Content
+let topConentItem = document.querySelector(".top-content")
+
+topConentItem.children[0].querySelector('h4').textContent = siteContent["main-content"]["features-h4"]
+topConentItem.children[0].querySelector('p').textContent = siteContent["main-content"]["features-content"]
+
+topConentItem.children[1].querySelector('h4').textContent = siteContent["main-content"]["about-h4"]
+topConentItem.children[1].querySelector('p').textContent = siteContent["main-content"]["about-content"]
+
+//Middle Image
+let middleImg = document.querySelector("#middle-img")
+middleImg.setAttribute("src", siteContent["main-content"]["middle-img-src"])
+
+//Bottom Content
+let bottomContentItem = document.querySelector(".bottom-content")
+
+bottomContentItem.children[0].querySelector('h4').textContent = siteContent["main-content"]["services-h4"]
+bottomContentItem.children[0].querySelector('p').textContent = siteContent["main-content"]["services-content"]
+
+bottomContentItem.children[1].querySelector('h4').textContent = siteContent["main-content"]["product-h4"]
+bottomContentItem.children[1].querySelector('p').textContent = siteContent["main-content"]["product-content"]
+
+bottomContentItem.children[2].querySelector('h4').textContent = siteContent["main-content"]["vision-h4"]
+bottomContentItem.children[2].querySelector('p').textContent = siteContent["main-content"]["vision-content"]
+//// ****
+
+//Contact
+let contactSection = document.querySelector('.contact')
+
+contactSection.querySelector('h4').textContent = siteContent['contact']["contact-h4"]
+
+contactSectionPs = contactSection.querySelectorAll('p')
+contactSectionPs[0].textContent = siteContent['contact']["address"]
+contactSectionPs[1].textContent = siteContent['contact']['phone']
+contactSectionPs[2].textContent = siteContent['contact']["email"]
+
+//Footer
+let footerSection = document.querySelector('footer')
+footerSection.textContent = siteContent['footer']['copyright']
+
+// #### Add new content
+// * [ ] Change the color of the navigation text to be green.
+let navBarText = document.querySelectorAll('.container header nav a')
+for (let i = 0; i < navBarText.length; i++){
+  navBarText[i].setAttribute('style', 'color:green'); 
+}
+
+// * [ ] Utilize `.appendChild()` and `.prepend()` to add two new items to the navigation system. You can call them whatever you want.
+var newNode1 = document.createElement('a')  // 1) create new node element
+newNode1.textContent = 'My New Link'        // 1) and add text to it
+newNode1.setAttribute('href', '#');         // 1) and add attribute to it
+
+
+let navBar = document.querySelector('.container header nav')  // 2) select existing node
+navBar.appendChild(newNode1)                                  // 2) append new node to existing node
+
+var newNode2 = document.createElement('a')  //create new node
+newNode2.textContent = 'My Other New Link'  //add text to it
+newNode2.setAttribute('href', '#');         //add attribute
+
+navBar.prepend(newNode2)                    //prepend node to node structure
+
+// * [ ] Check your work by looking at the [original html](original.html) in the browser
